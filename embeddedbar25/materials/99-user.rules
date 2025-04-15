@@ -1,0 +1,25 @@
+
+# Ai-Thinker boards
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", ATTRS{bcdDevice}=="8134", ATTRS{product}=="USB Serial", SYMLINK+="ai-board"
+
+
+# Hydrabus board
+
+## - set ignore for Modem Manager & permissions
+ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="60a7", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_TTY_BLACKLIST}="1", ENV{MTP_NO_PROBE}="1", ENV{ID_MM_PORT_IGNORE}="1", ENV{ID_MM_TTY_MANUAL_SCAN_ONLY}="1", MODE="0664", GROUP="plugdev"
+
+## - set symlink & permissions
+SUBSYSTEM=="tty", ATTRS{bcdDevice}=="0200", ATTRS{idProduct}=="60a7", ATTRS{idVendor}=="1d50", ATTRS{product}=="HydraBus 1.0 COM Port1", ATTRS{removable}=="removable", ATTRS{version}==" 1.10", MODE="0664", GROUP="plugdev", SYMLINK+="hydrabus"
+
+
+# usb-uart 5 pins model (5v & 3.3v)
+SUBSYSTEM=="tty", ATTRS{bcdDevice}=="0300", ATTRS{idProduct}=="2303", ATTRS{idVendor}=="067b", ATTRS{product}=="USB-Serial Controller", ATTRS{removable}=="removable", ATTRS{version}==" 1.10", MODE="0664", GROUP="plugdev", SYMLINK+="uart"
+
+
+# FT2232HL-based FTDI USB Serial Device converter
+SUBSYSTEM=="tty", ATTRS{bcdDevice}=="0700", ATTRS{manufacturer}=="FTDI", ATTRS{idProduct}=="6010", ATTRS{idVendor}=="0403", ATTRS{product}=="Dual RS232-HS", ATTRS{removable}=="removable", ATTRS{version}==" 2.00", MODE="0664", GROUP="plugdev", SYMLINK+="ft2232hl"
+
+# Logic analyzer
+ACTION=="add", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="0925", ATTR{idProduct}=="3881", ENV{ID_MODEL}=="fx2lafw", RUN+="/home/user/.local/etc/la-attach fpga"
+ACTION=="add", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="0925", ATTR{idProduct}=="3881", ENV{ID_MODEL}=="3881", RUN+="/home/user/.local/etc/la-attach hw"
+
