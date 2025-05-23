@@ -1,0 +1,10 @@
+#!/bin/bash
+USER="username"
+APP="/app/to/run"
+
+if [ "${1}" == "hw" ]; then
+	/usr/bin/sigrok-cli  --driver=fx2lafw  -l 5  --scan  &
+elif [ "${1}" == "fpga" ]; then
+	su  "${USER}"  -c "DISPLAY=:0.0 ${APP}"  &
+fi;
+

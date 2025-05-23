@@ -1,0 +1,55 @@
+
+
+; options from this section will be applied to ALL configurations
+; [GLOBAL]
+;	echo=
+
+
+; GLOBAL options + classic default: 115200@8N1 on ttyUSB0
+[default]
+	baud=115200
+	databits=8
+	parity=n
+	flow=n
+	stopbits=1
+	omap=crlf
+	port=/dev/ttyUSB0
+
+
+[wb2-13]
+	baud=115200
+	databits=8
+	parity=n
+	flow=n
+	stopbits=1
+	omap=crlf
+	port=/dev/ai-board
+
+
+[ra-08h]
+	baud=9600
+	databits=8
+	parity=n
+	flow=n
+	stopbits=1
+	echo=
+	port=/dev/ai-board
+
+
+[hydrabus]
+	baud=115200
+	databits=8
+	parity=n
+	flow=n
+	stopbits=1
+
+
+[ft2232]
+	baud=115200
+	databits=8
+	parity=n
+	flow=n
+	stopbits=1
+	quiet=
+	port=/dev/ft2232hl
+
